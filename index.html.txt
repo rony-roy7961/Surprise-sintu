@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Special Surprise</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Canvas for Floating Particles -->
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="card">
+    <h1>Happy Birthday! ❤️</h1>
+    
+    <!-- Photo Slideshow (Up to 5 Photos) -->
+    <img id="photo" src="photo1.jpg" alt="Memories">
+
+    <!-- Personal Message/Letter -->
+    <p>Aap meri life ke sabse khaas insaan ho...</p>
+
+    <!-- Background Music -->
+    <button id="musicBtn">🎵 Song Play Karo</button>
+    <audio id="bgMusic" src="song.mp3" loop></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
