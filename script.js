@@ -1,87 +1,52 @@
-// 1. Floating Hearts Canvas Animation (60FPS)
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = Array.from({ length: 40 }, () => ({
-  x: Math.random() * canvas.width,
-  y: Math.random() * canvas.height + canvas.height,
-  size: Math.random() * 10 + 5,
-  speed: Math.random() * 1.5 + 0.6,
-  opacity: Math.random() * 0.7 + 0.3
-}));
-
-function drawHeart(x, y, size, opacity) {
-  ctx.save();
-  ctx.beginPath();
-  ctx.translate(x, y);
-  ctx.scale(size / 10, size / 10);
-  ctx.moveTo(0, 0);
-  ctx.bezierCurveTo(-5, -5, -10, 0, 0, 10);
-  ctx.bezierCurveTo(10, 0, 5, -5, 0, 0);
-  ctx.fillStyle = `rgba(255, 182, 193, ${opacity})`;
-  ctx.fill();
-  ctx.restore();
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    drawHeart(p.x, p.y, p.size, p.opacity);
-    p.y -= p.speed;
-    if (p.y < -20) {
-      p.y = canvas.height + 20;
-      p.x = Math.random() * canvas.width;
-    }
-  });
-  requestAnimationFrame(animate);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-// 2. Photo Carousel (Smooth Fade Effect for 5 Photos)
-const photos = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg', 'photo5.jpg'];
-let currentIndex = 0;
-const imgElement = document.getElementById('photo');
-
-setInterval(() => {
-  imgElement.style.opacity = '0';
-  setTimeout(() => {
-    currentIndex = (currentIndex + 1) % photos.length;
-    imgElement.src = photos[currentIndex];
-    imgElement.style.opacity = '1';
-  }, 800);
-}, 3500);
-
-// 3. Audio Music Control
-function toggleMusic() {
+// Screen switching function
+function goToScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  
+  // Auto-play song on click
   const music = document.getElementById('bgMusic');
-  const btn = document.getElementById('musicBtn');
-  if (music.paused) {
-    music.play();
-    btn.textContent = '⏸ Song Stop Karo';
-  } else {
-    music.pause();
-    btn.textContent = '🎵 Background Music Play Karo';
+  if (music && music.paused) {
+    music.play().catch(() => {});
   }
 }
 
-// 4. Secret Box Unlock & Confetti Burst Effect 🎉
-function openSurprise() {
-  document.getElementById('unlockBtn').style.display = 'none';
-  document.getElementById('secretText').style.display = 'block';
-
-  // Confetti Animation (Crackers/Phool/Hearts Blast)
-  if (typeof confetti === 'function') {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+// Show surprise based on selected Penguin
+function showSurprise(option) {
+  const content = document.getElementById('giftContent');
+  
+  if (option === 1) {
+    // Option 1: Happy Birthday Note + Single Photo
+    content.innerHTML = `
+      <h2>HAPPY BIRTHDAY! 🎂💖</h2>
+      <img src="photo1.jpg" style="width:100%; max-height:220px; object-fit:cover; border-radius:15px; margin:10px 0;">
+      <div class="letter-box">
+        <p>Happy Birthday to the most amazing person! 🎉 You bring so much joy and sweetness into my life. Hope your day is filled with love and laughter! 💕</p>
+      </div>
+    `;
+    if (typeof confetti === 'function') confetti();
+  } 
+  else if (option === 2) {
+    // Option 2: Beautiful Photo Collage
+    content.innerHTML = `
+      <h2>Beautiful Memories 📸✨</h2>
+      <div class="collage-grid">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+      </div>
+      <p style="font-size:0.9rem; font-weight:600; color:#ff5d8f;">Forever My Cutie ❤️</p>
+    `;
+  } 
+  else if (option === 3) {
+    // Option 3: Virtual Hug & Love Message
+    content.innerHTML = `
+      <h2>Virtual Hug for ya! 🤗💕</h2>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcTB0YW90OHd2NGZtd3dqYXdqaXV5bGt5YWs2dzFzeGgxdHRuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2QDM9Jnim1YV55YA/giphy.gif" style="width:180px; margin:10px 0;">
+      <h2>I MISS YOU & I LOVE YOU! ❤️</h2>
+    `;
+    if (typeof confetti === 'function') confetti({ particleCount: 120, spread: 80 });
   }
+
+  goToScreen('screen4');
 }
