@@ -39,10 +39,10 @@ function showSurprise(option) {
     `;
   } 
   else if (option === 3) {
-    // Option 3: Virtual Hug & Love Message
+    // Option 3: Virtual Hug & Love Message (Updated working GIF)
     content.innerHTML = `
       <h2>Virtual Hug for ya! 🤗💕</h2>
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcTB0YW90OHd2NGZtd3dqYXdqaXV5bGt5YWs2dzFzeGgxdHRuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2QDM9Jnim1YV55YA/giphy.gif" style="width:180px; margin:10px 0;">
+      <img src="https://media.giphy.com/media/gHKnFHkGPUmG4/giphy.gif" style="width:180px; max-height:180px; object-fit:contain; margin:10px 0;">
       <h2>I MISS YOU & I LOVE YOU! ❤️</h2>
     `;
     if (typeof confetti === 'function') confetti({ particleCount: 120, spread: 80 });
