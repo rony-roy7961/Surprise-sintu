@@ -149,15 +149,6 @@ button:active {
   font-size: 0.95rem;
   line-height: 1.5;
   margin: 15px 0;
-}
-/* Collage Grid Frame Fix */
-.collage-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin: 15px 0;
-}
-
 .collage-grid img {
   width: 100%;
   height: 120px;
