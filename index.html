@@ -3,47 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Sister! 💖</title>
+  <title>A Special Birthday Gift 🎁</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <!-- Dynamic Floating Canvas -->
-  <canvas id="particleCanvas"></canvas>
 
-  <div class="main-container">
+  <div id="screen1" class="screen active">
     <div class="card">
-      <div class="tag">SPECIAL SURPRISE 🎁</div>
-      <h1>Happy Birthday, Pyari Behen! 🎂❤️</h1>
-
-      <!-- Photo Carousel -->
-      <div class="photo-frame">
-        <img id="photo" src="photo1.jpg" alt="Behen ki Yaadein">
+      <h2>PLS ACCEPT THE GIFT 🐧💖</h2>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYxcWZ3NndseXZvZzBxNG9hMW04b3Ixb3V6aWZxeG0wZXB6eGFpOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kFktGTrM3McdR9AThV/giphy.gif" alt="Penguin" class="gif-img">
+      <div class="btn-box">
+        <button class="yes-btn" onclick="goToScreen('screen3')">YES</button>
+        <button class="no-btn" onclick="goToScreen('screen2')">NO</button>
       </div>
-
-      <!-- Sweet Sister Note -->
-      <p class="sister-letter">
-        "Tu sirf meri behen nahi, meri sabse achhi dost aur meri jaan hai! 💖 <br>
-        Chahe hum kitna bhi ladein, par tere bina meri life adhoori hai. Tum hamesha muskuraati raho!"
-      </p>
-
-      <!-- Interactive Sound / Play Button -->
-      <div class="btn-group">
-        <button id="musicBtn" onclick="toggleMusic()">🎵 Background Music Play Karo</button>
-      </div>
-      <audio id="bgMusic" src="song.mp3" loop></audio>
-
-      <!-- Secret Wish Box Lock -->
-      <div class="secret-box">
-        <h3>🎁 Ek Secret Message Tere Liye:</h3>
-        <button id="unlockBtn" onclick="openSurprise()">Touch To Unlock Surprise ✨</button>
-        <p id="secretText" class="hidden-message">
-          🌟 "God kare tujhe duniya ki saari khushiyan mile! Tu jo mange wo sab sach ho jaye. Love you infinitely sissy! 😘"
-        </p>
-      </div>
-
     </div>
   </div>
+
+  <div id="screen2" class="screen">
+    <div class="card">
+      <h2>WHY DID YOU CLICK NO! 😭</h2>
+      <img src="https://media.giphy.com/media/ISOckXU1vnEG4/giphy.gif" alt="Sad Penguin" class="gif-img">
+      <button class="try-btn" onclick="goToScreen('screen1')">TRY AGAIN 🔄</button>
+    </div>
+  </div>
+
+  <div id="screen3" class="screen">
+    <div class="card wide-card">
+      <h2>Choose a penguin 🐧</h2>
+      <p class="sub-text">Each one has something special to say ✨</p>
+      <div class="penguin-grid">
+        <div class="p-card" onclick="showSurprise(1)">
+          <img src="https://cdn-icons-png.flaticon.com/512/2565/2565318.png" alt="Penguin 1">
+          <p>Gift 1 🎁</p>
+        </div>
+        <div class="p-card" onclick="showSurprise(2)">
+          <img src="https://cdn-icons-png.flaticon.com/512/2565/2565318.png" alt="Penguin 2">
+          <p>Gift 2 📸</p>
+        </div>
+        <div class="p-card" onclick="showSurprise(3)">
+          <img src="https://cdn-icons-png.flaticon.com/512/2565/2565318.png" alt="Penguin 3">
+          <p>Gift 3 🤗</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen4" class="screen">
+    <div class="card wide-card">
+      <div id="giftContent"></div>
+      <button class="back-btn" onclick="goToScreen('screen3')">⬅️ Back to Options</button>
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="song.mp3" loop></audio>
 
   <script src="script.js"></script>
 </body>
