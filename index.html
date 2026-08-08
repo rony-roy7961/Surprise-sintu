@@ -3,25 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>A Special Surprise</title>
+  <title>Happy Birthday Sister! 💖</title>
   <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <!-- Canvas for Floating Particles -->
+  <!-- Dynamic Floating Canvas -->
   <canvas id="particleCanvas"></canvas>
 
-  <div class="card">
-    <h1>Happy Birthday! ❤️</h1>
-    
-    <!-- Photo Slideshow (Up to 5 Photos) -->
-    <img id="photo" src="photo1.jpg" alt="Memories">
+  <div class="main-container">
+    <div class="card">
+      <div class="tag">SPECIAL SURPRISE 🎁</div>
+      <h1>Happy Birthday, Pyari Behen! 🎂❤️</h1>
 
-    <!-- Personal Message/Letter -->
-    <p>Aap meri life ke sabse khaas insaan ho...</p>
+      <!-- Photo Carousel -->
+      <div class="photo-frame">
+        <img id="photo" src="photo1.jpg" alt="Behen ki Yaadein">
+      </div>
 
-    <!-- Background Music -->
-    <button id="musicBtn">🎵 Song Play Karo</button>
-    <audio id="bgMusic" src="song.mp3" loop></audio>
+      <!-- Sweet Sister Note -->
+      <p class="sister-letter">
+        "Tu sirf meri behen nahi, meri sabse achhi dost aur meri jaan hai! 💖 <br>
+        Chahe hum kitna bhi ladein, par tere bina meri life adhoori hai. Tum hamesha muskuraati raho!"
+      </p>
+
+      <!-- Interactive Sound / Play Button -->
+      <div class="btn-group">
+        <button id="musicBtn" onclick="toggleMusic()">🎵 Background Music Play Karo</button>
+      </div>
+      <audio id="bgMusic" src="song.mp3" loop></audio>
+
+      <!-- Secret Wish Box Lock -->
+      <div class="secret-box">
+        <h3>🎁 Ek Secret Message Tere Liye:</h3>
+        <button id="unlockBtn" onclick="openSurprise()">Touch To Unlock Surprise ✨</button>
+        <p id="secretText" class="hidden-message">
+          🌟 "God kare tujhe duniya ki saari khushiyan mile! Tu jo mange wo sab sach ho jaye. Love you infinitely sissy! 😘"
+        </p>
+      </div>
+
+    </div>
   </div>
 
   <script src="script.js"></script>
